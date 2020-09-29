@@ -7,12 +7,16 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-#engine_type {
+#engine_type_div {
     display: none;
 }
 
 #turbo_div {
     display: none;
+}
+
+#weight_div{
+	display: none;
 }
 </style>
 
@@ -23,18 +27,39 @@ function myFun() {
     
     if(val === "sports"){
         document.getElementById("turbo_div").style.display='block';
-        document.getElementById("engine_type").style.display='none';
-        document.getElementById("weight").type="hidden";
+        document.getElementById("engine_type_div").style.display='none';
+        document.getElementById("weight_div").style.display='none';
+        
+        document.getElementById("engine_type").required=false;
+        document.getElementById("weight").required=false;
+        document.getElementById("turbo").required=true;
     }
     else if(val === "heavy"){
     	document.getElementById("turbo_div").style.display='none';
-    	document.getElementById("engine_type").style.display='none';
-  	    document.getElementById("weight").type="number";
+    	document.getElementById("engine_type_div").style.display='none';
+  	    document.getElementById("weight_div").style.display='block';
+  	    
+  	  document.getElementById("turbo").required=false;
+      document.getElementById("engine_type").required=false;
+      document.getElementById("weight").required=true;
     }
     else if(val === "normal"){
-    	document.getElementById("engine_type").style.display='block';
+    	document.getElementById("engine_type_div").style.display='block';
     	document.getElementById("turbo_div").style.display='none';
-    	document.getElementById("weight").type="hidden";
+    	document.getElementById("weight_div").style.display='none';
+    	
+    	document.getElementById("turbo").required=false;
+        document.getElementById("weight").required=false;
+        document.getElementById("engine_type").required=true;
+    }
+    else{
+    	document.getElementById("engine_type_div").style.display='none';
+    	document.getElementById("turbo_div").style.display='none';
+    	document.getElementById("weight_div").style.display='none';
+    	
+    	document.getElementById("engine_type").required=false;
+        document.getElementById("weight").required=false;
+        document.getElementById("turbo").required=false;
     }
 }
 </script>
@@ -70,13 +95,14 @@ function myFun() {
 	<div id="turbo_div">
 		<label>Turbo type?</label>
 		<select id="turbo" name="turbo" required="required">
+			<option value="">select---</option>
 			<option value="yes">Yes</option>
 			<option value="no">No</option>
 		</select>
 	</div>
 	
 	<div id="weight_div">
-		<input type="hidden" id="weight" name="weight" placeholder="weight" min="1" required="required">
+		<input type="number" id="weight" name="weight" placeholder="weight" min="1" required="required">
 	</div>
 	
 	<div id="power_div">
