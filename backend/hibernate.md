@@ -41,18 +41,18 @@
         session.save(alien);
         tx.commit();
 ## 2. fetch data from DB
-	_সব কিছু আগের মতোই শুধু এখানে save এর পরিবর্তে get() বা load use করতে হবে।_
-	> obj = (Object) session.get(class_name.class , primary_key)
-	* **get vs load method**
-	 * 
-		   * get সব সময় ই  DB এ  hit করে। fetched data কাজে না লাগলেও। 
-		   * load শুধু মাত্র দরকার লাগলে hit করে। 
-	 * 
-		   * get obj return করে সব সময়। 
-		   * load proxy obj return করে যদি ওই obj কাজে না লাগে। 
-	 * 
-		   * get thows nullpointer exception
-		   * load throws object nt found exception
+_সব কিছু আগের মতোই শুধু এখানে save এর পরিবর্তে get() বা load use করতে হবে।_
+> obj = (Object) session.get(class_name.class , primary_key)
+* **get vs load method**
+ * 
+	   * get সব সময় ই  DB এ  hit করে। fetched data কাজে না লাগলেও। 
+	   * load শুধু মাত্র দরকার লাগলে hit করে। 
+ * 
+	   * get obj return করে সব সময়। 
+	   * load proxy obj return করে যদি ওই obj কাজে না লাগে। 
+ * 
+	   * get thows nullpointer exception
+	   * load throws object nt found exception
 
 ## 3. Annotations
 	* @Entity
@@ -69,15 +69,15 @@
 ## 4. Hibernate Caching
 * first level cache by default hibernate এ থাকে। 
 ### second level caching steps
-	* **update pom.xml**
-		  * add echache
-		  * add hibernate-echache (same version of hibernate-core)
-	* **update .cfg file**
-		>  `<property name="hibernate.cache.use_second_level_cache">true</property>
-		 >  <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>`
-	* **update POJO class**
-		  * @Cacheable
-		  * @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+* **update pom.xml**
+  * add echache
+  * add hibernate-echache (same version of hibernate-core)
+* **update .cfg file**
+	>  `<property name="hibernate.cache.use_second_level_cache">true</property>
+	 >  <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>`
+* **update POJO class**
+  * @Cacheable
+  * @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 ## 5. JPA
 * **update pom.xml**
 	 * MySQL
@@ -112,20 +112,20 @@
 		em.persist(alien);
 		em.getTransaction().commit();
 
-### 6. Mapping Relations
+## 6. Mapping Relations
 ###### বুঝিনি এখনো ভাল মতো। 
-### 7. others
-	 * **HQL**: SQL query এর মতোই। 
-	 * **EAGER vs LAZY**
-		  * EAGER সব সময় ই query করে। 
-		  * LAZY শুধু মাত্র দরকারের সময় করে। 
-	 * **query cache**
-	 * **persistence life cycle**
-		  * Transient
-		  * Persistent
-		  * Detached
-		  * Removed
-		  * Garbage
+## 7. others
+ * **HQL**: SQL query এর মতোই। 
+ * **EAGER vs LAZY**
+	  * EAGER সব সময় ই query করে। 
+	  * LAZY শুধু মাত্র দরকারের সময় করে। 
+ * **query cache**
+ * **persistence life cycle**
+	  * Transient
+	  * Persistent
+	  * Detached
+	  * Removed
+	  * Garbage
 
 
  
